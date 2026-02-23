@@ -33,7 +33,7 @@ const BoxHover = () => {
   }, []);
 
   return (
-    <div className="w-full h-screen relative">
+    <div className="w-full h-screen relative hidden xl:block">
       <div className="w-full h-screen absolute">
         <spline-viewer
           ref={splineRef}
