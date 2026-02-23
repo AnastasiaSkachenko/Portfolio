@@ -1,7 +1,13 @@
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { motion } from 'motion/react';
 
-export function About() {
+export function About(): JSX.Element {
+  const paragraphs: string[] = [
+    "I'm a passionate fullstack developer with 5+ years of experience building scalable web applications. I love turning complex problems into simple, beautiful solutions.",
+    "My journey in web development started with a curiosity about how things work on the internet. Today, I work with cutting-edge technologies to create performant, user-friendly applications.",
+    "When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community."
+  ];
+
   return (
     <section id="about" className="py-20 px-4 bg-gray-50">
       <div className="max-w-6xl mx-auto">
@@ -23,20 +29,11 @@ export function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <p className="text-lg text-gray-700 mb-4">
-              I'm a passionate fullstack developer with 5+ years of experience building 
-              scalable web applications. I love turning complex problems into simple, 
-              beautiful solutions.
-            </p>
-            <p className="text-lg text-gray-700 mb-4">
-              My journey in web development started with a curiosity about how things work 
-              on the internet. Today, I work with cutting-edge technologies to create 
-              performant, user-friendly applications.
-            </p>
-            <p className="text-lg text-gray-700">
-              When I'm not coding, you'll find me exploring new technologies, contributing 
-              to open-source projects, or sharing knowledge with the developer community.
-            </p>
+            {paragraphs.map((paragraph, index) => (
+              <p key={index} className="text-lg text-gray-700 mb-4">
+                {paragraph}
+              </p>
+            ))}
           </motion.div>
           
           <motion.div 

@@ -1,15 +1,26 @@
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail, Heart, LucideIcon } from 'lucide-react';
 import { motion } from 'motion/react';
 
-export function Footer() {
-  const quickLinks = [
+interface QuickLink {
+  href: string;
+  label: string;
+}
+
+interface SocialLink {
+  href: string;
+  icon: LucideIcon;
+  label: string;
+}
+
+export function Footer(): JSX.Element {
+  const quickLinks: QuickLink[] = [
     { href: '#about', label: 'About' },
     { href: '#skills', label: 'Skills' },
     { href: '#projects', label: 'Projects' },
     { href: '#contact', label: 'Contact' }
   ];
 
-  const socialLinks = [
+  const socialLinks: SocialLink[] = [
     { href: 'https://github.com', icon: Github, label: 'GitHub' },
     { href: 'https://linkedin.com', icon: Linkedin, label: 'LinkedIn' },
     { href: 'mailto:alex@example.com', icon: Mail, label: 'Email' }
@@ -74,6 +85,7 @@ export function Footer() {
                     href={link.href}
                     target={link.href.startsWith('http') ? '_blank' : undefined}
                     rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    aria-label={link.label}
                     className="p-2 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors"
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     whileTap={{ scale: 0.95 }}

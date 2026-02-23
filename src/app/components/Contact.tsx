@@ -1,18 +1,24 @@
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { Mail, MapPin, Phone, LucideIcon } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { motion } from 'motion/react';
 
-export function Contact() {
-  const handleSubmit = (e: React.FormEvent) => {
+interface ContactInfo {
+  icon: LucideIcon;
+  title: string;
+  content: string;
+}
+
+export function Contact(): JSX.Element {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     // Form submission logic would go here
     alert('Form submitted! (This is a demo)');
   };
 
-  const contactInfo = [
+  const contactInfo: ContactInfo[] = [
     { icon: Mail, title: 'Email', content: 'alex@example.com' },
     { icon: Phone, title: 'Phone', content: '+1 (555) 123-4567' },
     { icon: MapPin, title: 'Location', content: 'San Francisco, CA' }

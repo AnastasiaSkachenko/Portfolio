@@ -4,8 +4,17 @@ import { Button } from './ui/button';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { motion } from 'motion/react';
 
-export function Projects() {
-  const projects = [
+interface Project {
+  title: string;
+  description: string;
+  image: string;
+  technologies: string[];
+  github: string;
+  demo: string;
+}
+
+export function Projects(): JSX.Element {
+  const projects: Project[] = [
     {
       title: 'E-Commerce Platform',
       description: 'A full-featured online shopping platform with cart, checkout, and payment integration',

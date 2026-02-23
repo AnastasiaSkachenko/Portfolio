@@ -2,7 +2,33 @@ import { Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from './ui/button';
 import { motion } from 'motion/react';
 
-export function Hero() {
+interface SocialLink {
+  href: string;
+  icon: typeof Github;
+  label: string;
+}
+
+export function Hero(): JSX.Element {
+  const socialLinks: SocialLink[] = [
+    { href: 'https://github.com', icon: Github, label: 'GitHub' },
+    { href: 'https://linkedin.com', icon: Linkedin, label: 'LinkedIn' },
+    { href: 'mailto:alex@example.com', icon: Mail, label: 'Email' }
+  ];
+
+  const scrollToContact = (): void => {
+    const element = document.querySelector('#contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const scrollToProjects = (): void => {
+    const element = document.querySelector('#projects');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center px-4 py-20">
       <div className="max-w-4xl mx-auto text-center">
@@ -45,11 +71,11 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
-          <Button size="lg" className="gap-2">
+          <Button size="lg" className="gap-2" onClick={scrollToContact}>
             <Mail className="w-4 h-4" />
             Get In Touch
           </Button>
-          <Button size="lg" variant="outline" className="gap-2">
+          <Button size="lg" variant="outline" className="gap-2" onClick={scrollToProjects}>
             View Projects
           </Button>
         </motion.div>
@@ -60,34 +86,23 @@ export function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 1 }}
         >
-          <motion.a 
-            href="https://github.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="p-3 rounded-full border hover:bg-gray-100 transition-colors"
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Github className="w-5 h-5" />
-          </motion.a>
-          <motion.a 
-            href="https://linkedin.com" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="p-3 rounded-full border hover:bg-gray-100 transition-colors"
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Linkedin className="w-5 h-5" />
-          </motion.a>
-          <motion.a 
-            href="mailto:alex@example.com"
-            className="p-3 rounded-full border hover:bg-gray-100 transition-colors"
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Mail className="w-5 h-5" />
-          </motion.a>
+          {socialLinks.map((link, index) => {
+            const Icon = link.icon;
+            return (
+              <motion.a
+                key={index}
+                href={link.href}
+                target={link.href.startsWith('http') ? '_blank' : undefined}
+                rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                aria-label={link.label}
+                className="p-3 rounded-full border hover:bg-gray-100 transition-colors"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Icon className="w-5 h-5" />
+              </motion.a>
+            );
+          })}
         </motion.div>
       </div>
     </section>

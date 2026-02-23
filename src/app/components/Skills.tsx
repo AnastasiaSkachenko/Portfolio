@@ -1,9 +1,16 @@
-import { Code2, Database, Cloud, Layout } from 'lucide-react';
+import { Code2, Database, Cloud, Layout, LucideIcon } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { motion } from 'motion/react';
 
-export function Skills() {
-  const skillCategories = [
+interface SkillCategory {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  skills: string[];
+}
+
+export function Skills(): JSX.Element {
+  const skillCategories: SkillCategory[] = [
     {
       icon: Layout,
       title: 'Frontend',
