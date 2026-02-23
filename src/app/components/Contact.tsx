@@ -1,17 +1,15 @@
-import { Mail, MapPin, Phone, LucideIcon } from 'lucide-react';
-import { Button } from './ui/button';
-import { Input } from './ui/input';
-import { Textarea } from './ui/textarea';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
+import { Mail, MapPin, Phone, LucideIcon, Github, Linkedin, Send } from 'lucide-react';
+import { Card, CardContent} from './ui/card';
 import { motion } from 'motion/react';
 
 interface ContactInfo {
   icon: LucideIcon;
   title: string;
   content: string;
+  href?: string
 }
 
-export function Contact(): JSX.Element {
+export const Contact = () =>  {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     // Form submission logic would go here
@@ -19,9 +17,13 @@ export function Contact(): JSX.Element {
   };
 
   const contactInfo: ContactInfo[] = [
-    { icon: Mail, title: 'Email', content: 'alex@example.com' },
-    { icon: Phone, title: 'Phone', content: '+1 (555) 123-4567' },
-    { icon: MapPin, title: 'Location', content: 'San Francisco, CA' }
+    { icon: Mail, title: 'Email', content: 'skachenkoa@gmail.com' },
+    { icon: Phone, title: 'Phone', content: '+48 73 359 68 94' },
+    { icon: MapPin, title: 'Location', content: 'Stockholm, Sweden'},
+    { icon: Github, title: 'Github', content: 'AnastasiaSkachenko', href: "https://github.com/AnastasiaSkachenko"},
+    { icon: Linkedin, title: 'LinkedIn', content: 'Anastasiia Skachenko', href: "https://www.linkedin.com/in/anastasiia-skachenko/"},
+    { icon: Send, title: "Telegram", content: "@mngi_s" }
+    
   ];
 
   return (
@@ -46,51 +48,16 @@ export function Contact(): JSX.Element {
           Have a project in mind or want to collaborate? Feel free to reach out!
         </motion.p>
         
-        <div className="grid md:grid-cols-3 gap-8">
+        <div >
           <motion.div 
-            className="md:col-span-2"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <Card>
-              <CardHeader>
-                <CardTitle>Send a Message</CardTitle>
-                <CardDescription>Fill out the form and I'll get back to you soon</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm">Name</label>
-                      <Input id="name" placeholder="Your name" required />
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm">Email</label>
-                      <Input id="email" type="email" placeholder="your@email.com" required />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="subject" className="text-sm">Subject</label>
-                    <Input id="subject" placeholder="What's this about?" required />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm">Message</label>
-                    <Textarea
-                      id="message"
-                      placeholder="Tell me more about your project..."
-                      rows={6}
-                      required
-                    />
-                  </div>
-                  <Button type="submit" className="w-full">Send Message</Button>
-                </form>
-              </CardContent>
-            </Card>
           </motion.div>
           
-          <div className="space-y-6">
+          <div className="grid md:grid-cols-2 gap-6 ">
             {contactInfo.map((item, index) => {
               const Icon = item.icon;
               return (
@@ -117,7 +84,13 @@ export function Contact(): JSX.Element {
                           </motion.div>
                           <div>
                             <h3 className="mb-1">{item.title}</h3>
-                            <p className="text-sm text-gray-600">{item.content}</p>
+                            {
+                              item.href ? (
+                                <a href={item.href} className="text-sm text-gray-600">{item.content}</a>
+                              ) : (
+                                <p className="text-sm text-gray-600">{item.content}</p>
+                              )
+                            }
                           </div>
                         </div>
                       </CardContent>

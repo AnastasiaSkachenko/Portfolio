@@ -8,7 +8,7 @@ interface NavLink {
   label: string;
 }
 
-export function Navigation(): JSX.Element {
+export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
 
@@ -40,7 +40,7 @@ export function Navigation(): JSX.Element {
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md py-4' : 'bg-transparent py-6'
+        isScrolled ? 'bg-gray-900 shadow-md py-3' : 'bg-transparent py-6'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -53,7 +53,7 @@ export function Navigation(): JSX.Element {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
         >
-          <span className="text-blue-600">AR</span>
+          <span className="text-blue-600 font-semibold">AS</span>
         </motion.a>
 
         {/* Desktop Navigation */}
@@ -63,7 +63,7 @@ export function Navigation(): JSX.Element {
               key={link.href}
               href={link.href}
               onClick={(e) => scrollToSection(e, link.href)}
-              className="hover:text-blue-600 transition-colors relative"
+              className=" bg-gray-900 px-3 py-2 rounded-full text-white hover:text-blue-600 transition-colors relative"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}

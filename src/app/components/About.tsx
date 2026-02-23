@@ -1,15 +1,15 @@
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { motion } from 'motion/react';
 
-export function About(): JSX.Element {
+export const About = () =>  {
   const paragraphs: string[] = [
-    "I'm a passionate fullstack developer with 5+ years of experience building scalable web applications. I love turning complex problems into simple, beautiful solutions.",
-    "My journey in web development started with a curiosity about how things work on the internet. Today, I work with cutting-edge technologies to create performant, user-friendly applications.",
-    "When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community."
-  ];
+    "I’m an aspiring fullstack developer studying at Yrkeshögskola, actively building real-world experience through startup collaborations and personal projects. I thrive in fast-paced environments where I can learn quickly, experiment, and turn ideas into impactful applications.",
+    "I’m deeply curious about new technologies and love continuously expanding my skill set — whether that’s through hackathons, side projects, or independent study.",
+    "My goal is to grow into a developer who not only writes clean code but also builds meaningful digital experiences."
+   ];
 
   return (
-    <section id="about" className="py-20 px-4 bg-gray-50">
+    <section id="about" className="py-20 px-4 bg-gray-900">
       <div className="max-w-6xl mx-auto">
         <motion.h2 
           className="text-4xl md:text-5xl text-center mb-12"
@@ -30,7 +30,7 @@ export function About(): JSX.Element {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             {paragraphs.map((paragraph, index) => (
-              <p key={index} className="text-lg text-gray-700 mb-4">
+              <p key={index} className="text-lg text-white mb-4">
                 {paragraph}
               </p>
             ))}

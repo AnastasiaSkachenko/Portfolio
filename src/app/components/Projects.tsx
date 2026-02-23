@@ -3,8 +3,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/
 import { Button } from './ui/button';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { motion } from 'motion/react';
+import { projects } from '../../assets/projects.backup';
 
-interface Project {
+export interface Project {
   title: string;
   description: string;
   image: string;
@@ -13,36 +14,11 @@ interface Project {
   demo: string;
 }
 
-export function Projects(): JSX.Element {
-  const projects: Project[] = [
-    {
-      title: 'E-Commerce Platform',
-      description: 'A full-featured online shopping platform with cart, checkout, and payment integration',
-      image: 'https://images.unsplash.com/photo-1557324232-b8917d3c3dcb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXZlbG9wbWVudCUyMGNvZGluZ3xlbnwxfHx8fDE3NzE3NDg0NzF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
-      github: 'https://github.com',
-      demo: 'https://example.com'
-    },
-    {
-      title: 'Task Management App',
-      description: 'Real-time collaborative task management tool with team features and notifications',
-      image: 'https://images.unsplash.com/photo-1754548930515-ac7eb978280d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMHRlY2glMjBwcm9qZWN0fGVufDF8fHx8MTc3MTgyOTM3N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      technologies: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind'],
-      github: 'https://github.com',
-      demo: 'https://example.com'
-    },
-    {
-      title: 'Analytics Dashboard',
-      description: 'Advanced data visualization dashboard with real-time metrics and reporting',
-      image: 'https://images.unsplash.com/photo-1605108222700-0d605d9ebafe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzcxODE1NzcwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      technologies: ['Vue.js', 'Python', 'MongoDB', 'Chart.js'],
-      github: 'https://github.com',
-      demo: 'https://example.com'
-    }
-  ];
+export const Projects = () => {
+
 
   return (
-    <section id="projects" className="py-20 px-4 bg-gray-50">
+    <section id="projects" className="py-20 px-4 bg-gray-900">
       <div className="max-w-6xl mx-auto">
         <motion.h2 
           className="text-4xl md:text-5xl text-center mb-4"
@@ -54,7 +30,7 @@ export function Projects(): JSX.Element {
           Featured Projects
         </motion.h2>
         <motion.p 
-          className="text-center text-gray-600 mb-12 max-w-2xl mx-auto"
+          className="text-center text-gray-300 mb-12 max-w-2xl mx-auto"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -76,9 +52,9 @@ export function Projects(): JSX.Element {
                 whileHover={{ y: -10 }}
                 transition={{ duration: 0.3 }}
               >
-                <Card className="overflow-hidden hover:shadow-xl transition-shadow h-full">
+                <Card className="overflow-hidden hover:shadow-xl transition-shadow h-full bg-gray-800">
                   <motion.div 
-                    className="relative h-48 overflow-hidden"
+                    className="relative h-52 overflow-hidden  "
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   >
@@ -89,8 +65,8 @@ export function Projects(): JSX.Element {
                     />
                   </motion.div>
                   <CardHeader>
-                    <CardTitle>{project.title}</CardTitle>
-                    <CardDescription>{project.description}</CardDescription>
+                    <CardTitle className='text-gray-200'>{project.title}</CardTitle>
+                    <CardDescription className='text-gray-200'>{project.description}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="flex flex-wrap gap-2 mb-4">
@@ -111,13 +87,13 @@ export function Projects(): JSX.Element {
                       <Button size="sm" variant="outline" className="gap-1 flex-1" asChild>
                         <a href={project.github} target="_blank" rel="noopener noreferrer">
                           <Github className="w-4 h-4" />
-                          Code
+                          <span >Code</span>
                         </a>
                       </Button>
                       <Button size="sm" className="gap-1 flex-1" asChild>
                         <a href={project.demo} target="_blank" rel="noopener noreferrer">
                           <ExternalLink className="w-4 h-4" />
-                          Demo
+                          <span >Demo</span>
                         </a>
                       </Button>
                     </div>

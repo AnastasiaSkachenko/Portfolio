@@ -12,7 +12,7 @@ interface SocialLink {
   label: string;
 }
 
-export function Footer(): JSX.Element {
+export const Footer = () => {
   const quickLinks: QuickLink[] = [
     { href: '#about', label: 'About' },
     { href: '#skills', label: 'Skills' },
@@ -21,9 +21,9 @@ export function Footer(): JSX.Element {
   ];
 
   const socialLinks: SocialLink[] = [
-    { href: 'https://github.com', icon: Github, label: 'GitHub' },
-    { href: 'https://linkedin.com', icon: Linkedin, label: 'LinkedIn' },
-    { href: 'mailto:alex@example.com', icon: Mail, label: 'Email' }
+    { href: "https://github.com/AnastasiaSkachenko", icon: Github, label: 'GitHub' },
+    { href: "https://www.linkedin.com/in/anastasiia-skachenko/", icon: Linkedin, label: 'LinkedIn' },
+    { href: 'mailto:skachenkoa@gmail.com', icon: Mail, label: 'Email' }
   ];
 
   return (
@@ -37,7 +37,7 @@ export function Footer(): JSX.Element {
             transition={{ duration: 0.5 }}
           >
             <h3 className="text-2xl mb-4">
-              <span className="text-blue-400">Alex Rivera</span>
+              <span className="text-blue-400">Anastasiia Skachenko</span>
             </h3>
             <p className="text-gray-400">
               Fullstack Developer crafting beautiful and functional web experiences.
@@ -115,7 +115,7 @@ export function Footer(): JSX.Element {
               transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 1 }}
             >
               <Heart className="w-4 h-4 text-red-500 fill-red-500" />
-            </motion.span> by Alex Rivera © 2026
+            </motion.span> by Anastasiia Skachenko © 2026
           </p>
         </motion.div>
       </div>

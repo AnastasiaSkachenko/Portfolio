@@ -9,37 +9,37 @@ interface SkillCategory {
   skills: string[];
 }
 
-export function Skills(): JSX.Element {
+export const Skills = () => {
   const skillCategories: SkillCategory[] = [
     {
       icon: Layout,
       title: 'Frontend',
       description: 'Building responsive and interactive user interfaces',
-      skills: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Vue.js', 'Redux']
+      skills: ['React', 'TypeScript', 'Tailwind CSS', 'Redux']
     },
     {
       icon: Code2,
       title: 'Backend',
       description: 'Creating robust server-side applications',
-      skills: ['Node.js', 'Express', 'Python', 'Django', 'REST APIs', 'GraphQL']
+      skills: ['Node.js', 'Express', 'Python', 'Django', 'REST APIs']
     },
     {
       icon: Database,
       title: 'Database',
       description: 'Managing and optimizing data storage',
-      skills: ['PostgreSQL', 'MongoDB', 'Redis', 'Prisma', 'MySQL', 'Supabase']
+      skills: ['PostgreSQL', 'MongoDB', 'Redis', 'Drizzle', 'Supabase']
     },
     {
       icon: Cloud,
       title: 'DevOps & Cloud',
       description: 'Deploying and scaling applications',
-      skills: ['AWS', 'Docker', 'CI/CD', 'Vercel', 'GitHub Actions', 'Kubernetes']
+      skills: ['Docker', 'CI/CD', 'GitHub Actions', 'Kubernetes']
     }
   ];
 
   return (
-    <section id="skills" className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
+    <section id="skills" className="py-20 px-4 relative isolate">
+      <div className="relative max-w-6xl mx-auto z-10">
         <motion.h2 
           className="text-4xl md:text-5xl text-center mb-4"
           initial={{ opacity: 0, y: 20 }}
@@ -50,7 +50,7 @@ export function Skills(): JSX.Element {
           Skills & Technologies
         </motion.h2>
         <motion.p 
-          className="text-center text-gray-600 mb-12 max-w-2xl mx-auto"
+          className="text-center text-gray-300 mb-12 max-w-2xl mx-auto"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -59,7 +59,7 @@ export function Skills(): JSX.Element {
           A comprehensive toolkit for building modern web applications from frontend to deployment
         </motion.p>
         
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-6 ">
           {skillCategories.map((category, index) => {
             const Icon = category.icon;
             return (
@@ -74,7 +74,7 @@ export function Skills(): JSX.Element {
                   whileHover={{ y: -5, scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <Card className="h-full hover:shadow-lg transition-shadow">
+                  <Card className="h-full hover:shadow-lg transition-shadow bg-black">
                     <CardHeader>
                       <div className="flex items-center gap-3 mb-2">
                         <motion.div 
@@ -93,7 +93,7 @@ export function Skills(): JSX.Element {
                         {category.skills.map((skill, skillIndex) => (
                           <motion.span
                             key={skillIndex}
-                            className="px-3 py-1 bg-gray-100 rounded-full text-sm"
+                            className="px-3 py-1 bg-gray-100 rounded-full text-sm text-black"
                             initial={{ opacity: 0, scale: 0.8 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
@@ -111,7 +111,11 @@ export function Skills(): JSX.Element {
             );
           })}
         </div>
+
       </div>
+      <img className="absolute top-25 w-55 z-0" src="src/assets/blob-1.gif" />
+      <img className="absolute bottom-15 right-5 w-55 z-0" src="src/assets/blob-2.gif" />
+
     </section>
   );
 }
