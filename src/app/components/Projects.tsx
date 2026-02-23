@@ -16,7 +16,6 @@ export interface Project {
 
 export const Projects = () => {
 
-
   return (
     <section id="projects" className="py-20 px-4 bg-gray-900">
       <div className="max-w-6xl mx-auto">
@@ -54,7 +53,7 @@ export const Projects = () => {
               >
                 <Card className="overflow-hidden hover:shadow-xl transition-shadow h-full bg-gray-800">
                   <motion.div 
-                    className="relative h-52 overflow-hidden  "
+                    className="relative h-52 overflow-hidden"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   >

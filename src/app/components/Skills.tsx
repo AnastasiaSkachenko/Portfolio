@@ -1,6 +1,8 @@
 import { Code2, Database, Cloud, Layout, LucideIcon } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { motion } from 'motion/react';
+import blob1 from "../../assets/blob-1.gif";
+import blob2 from "../../assets/blob-2.gif";
 
 interface SkillCategory {
   icon: LucideIcon;
@@ -113,8 +115,8 @@ export const Skills = () => {
         </div>
 
       </div>
-      <img className="absolute top-25 w-55 z-0" src="src/assets/blob-1.gif" />
-      <img className="absolute bottom-15 right-5 w-55 z-0" src="src/assets/blob-2.gif" />
+      <img className="absolute top-25 w-55 z-0" src={blob1} />
+      <img className="absolute bottom-15 right-5 w-55 z-0" src={blob2} />
 
     </section>
   );
